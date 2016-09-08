@@ -23,6 +23,10 @@ mkdir -p pkg-debian/usr/bin
 cp main.py pkg-debian/usr/bin/nfqueue-packet-delay
 chmod +x pkg-debian/usr/bin/nfqueue-packet-delay
 
+cd pkg-debian
+find * | grep -v DEBIAN | xargs md5sum > DEBIAN/md5sums
+cd ..
+
 du_total=$(du -d 0 pkg-debian/usr | cut -f1)
 
 cat > pkg-debian/DEBIAN/control << EOF
